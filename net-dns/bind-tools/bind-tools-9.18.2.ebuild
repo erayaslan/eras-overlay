@@ -71,8 +71,6 @@ src_configure() {
 	# to expose CMSG_* macros from sys/sockets.h
 	[[ ${CHOST} == *-solaris* ]] && append-cflags "-D_XOPEN_SOURCE=600"
 
-	# localstatedir for nsupdate -l, bug 395785
-	#tc-export BUILD_CC
 	econf "${myeconfargs[@]}"
 }
 
