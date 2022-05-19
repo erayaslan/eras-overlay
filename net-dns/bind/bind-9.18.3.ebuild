@@ -58,8 +58,8 @@ RESTRICT="!test? ( test )"
 src_configure() {
 	local myeconfargs=(
 		--prefix="${EPREFIX}"/usr
-		--sysconfdir=/etc/bind
-		--localstatedir=/var
+		--sysconfdir="${EPREFIX}"/etc/bind
+		--localstatedir="${EPREFIX}"/var
 		--enable-full-report
 		--without-readline
 		--with-openssl="${ESYSROOT}"/usr
@@ -90,7 +90,7 @@ src_test() {
 	# ifconfig.sh up and then down as root
 	#default
 
-	# just run the tests that dont mock around with IPs
+	# just run the tests that dont mock around with IP addresses
 	emake -C lib/ check
 }
 
@@ -144,7 +144,7 @@ pkg_postinst() {
 	tmpfiles_process named.conf
 
 	if [[ ! -f '/etc/bind/rndc.key' && ! -f '/etc/bind/rndc.conf' ]]; then
-		einfo "Using /dev/urandom for generating rndc.key"
+		einfo "Generating rndc.key"
 		/usr/sbin/rndc-confgen -a
 		chown root:named /etc/bind/rndc.key || die
 		chmod 0640 /etc/bind/rndc.key || die
