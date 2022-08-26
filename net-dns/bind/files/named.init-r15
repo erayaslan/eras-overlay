@@ -68,8 +68,6 @@ start() {
 }
 
 stop() {
-	local reported=0
-
 	ebegin "Stopping named"
 	# -R 10, bug 335398
 	_get_pidfile
