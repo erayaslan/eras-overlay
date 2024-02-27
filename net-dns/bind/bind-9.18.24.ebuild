@@ -160,4 +160,17 @@ pkg_postinst() {
 		chown root:named /etc/bind/rndc.key || die
 		chmod 0640 /etc/bind/rndc.key || die
 	fi
+
+	# show only when upgrading to 9.18
+	if [[ -n "${REPLACING_VERSIONS}" ]] && ver_test "${REPLACING_VERSIONS}" -lt 9.18; then
+		elog "As this is a major bind version upgrade, please read:"
+		elog "   https://kb.isc.org/docs/changes-to-be-aware-of-when-moving-from-bind-916-to-918"
+		elog "for differences in functionality."
+		elog ""
+		ewarn "In particular, please note that bind-9.18 does not need a root hints file anymore"
+		ewarn "and is not shipped with one. If your current configuration specifies a root hints"
+		ewarn "file - usually called named.cache - bind will not start as it will not be able to"
+		ewarn "find the specified file. Best practice is to delete the offending lines that"
+		ewarn "reference named.cache file from your configuration."
+	fi
 }
