@@ -63,7 +63,7 @@ start() {
 	start-stop-daemon --start --pidfile ${PIDFILE} \
 		--nicelevel ${NAMED_NICELEVEL:-0} \
 		--exec /usr/sbin/named \
-		-- -u named ${CPU} ${OPTIONS}
+		-- -u named -c ${NAMED_CONF} ${CPU} ${OPTIONS}
 	eend $?
 }
 
