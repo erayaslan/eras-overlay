@@ -1,6 +1,3 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Eray Aslan <eras@gentoo.org> (2024-07-24)
-# Needs more testing
-=net-dns/bind-9.20*
