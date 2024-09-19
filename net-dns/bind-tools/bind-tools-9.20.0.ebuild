@@ -15,7 +15,7 @@ SRC_URI="https://downloads.isc.org/isc/bind9/${PV}/${MY_P}.tar.xz"
 S="${WORKDIR}/${MY_P}"
 LICENSE="MPL-2.0"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="gssapi idn libedit lmdb readline static-libs xml"
 
 COMMON_DEPEND="
