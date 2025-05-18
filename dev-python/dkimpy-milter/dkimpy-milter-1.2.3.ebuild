@@ -20,8 +20,6 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm64"
 
 RDEPEND="
-	acct-user/dkimpy-milter
-	acct-group/dkimpy-milter
 	dev-python/dkimpy[${PYTHON_USEDEP}]
 	dev-python/dnspython[${PYTHON_USEDEP}]
 	dev-python/pymilter[${PYTHON_USEDEP}]
@@ -41,5 +39,6 @@ python_install() {
 	distutils-r1_python_install
 
 	mv "${ED}"{/usr/etc,} || die
-	mv "${ED}"/etc/init.d/dkimpy-milter{.openrc,} || die
+	rm "${ED}"/etc/init.d/dkimpy-milter{.openrc,} || die
+	newinitd "${FILESDIR}"/dkimpy-milter.initd dkimpy-milter
 }
