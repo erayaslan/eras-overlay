@@ -24,7 +24,7 @@ LICENSE="GPL-2"
 SLOT="0"
 
 RDEPEND="
-	mail-filter/libmilter
+	mail-filter/libmilter:=
 "
 
 distutils_enable_tests unittest
